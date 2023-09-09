@@ -1,4 +1,11 @@
 "use client";
+
+//const res = await fetch("api/drinks", {
+//  method: "GET",
+//});
+//const response = await res.json();
+//console.log(response);
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -15,38 +22,70 @@ type ProductsProps = {
   productDetails: string;
 };
 
-export default function MainPageSlider1({ drinksArr }: any) {
+export default function MainPageSlider1({ productsArr }: any) {
   const [canShowLeftArrow, setCanShowLeftArrow] = useState<boolean>(false);
+  const [canShowRightArrow, setCanShowRightArrow] = useState<boolean>(false);
 
-  const [currRightArrowIdx, setCurrRightArrowIdx] = useState<number>(1);
+  const [currArrowIdxs, setCurrArrowIdxs] = useState<number>(1);
 
   const [productsToDisplay, setProductsToDisplay] = useState<ProductsProps[]>([]);
-  const drinks: ProductsProps[] = drinksArr;
+  const products: ProductsProps[] = productsArr;
 
   useEffect(() => {
-    function getStartingDrinks() {
-      const startingProducts: ProductsProps[] = drinks.slice(0, 5);
-      setProductsToDisplay(startingProducts);
-    }
-    getStartingDrinks();
+    const startingProducts: ProductsProps[] = products.slice(0, 5);
+    setProductsToDisplay(startingProducts);
   }, []);
 
   async function moveProductsToLeft() {
-    //const res = await fetch("api/drinks", {
-    //  method: "GET",
-    //});
-    //const response = await res.json();
-    //console.log(response);
+    setCanShowRightArrow(false);
+
+    setCurrArrowIdxs((prev) => prev - 1);
+    let newEndingPoint = currArrowIdxs - 1;
+    newEndingPoint = newEndingPoint * 5;
+    const newStartingPoint = newEndingPoint - 5;
+
+    const newProductsToDisplay = products.slice(newStartingPoint, newEndingPoint);
+
+    setProductsToDisplay(newProductsToDisplay);
+
+    if (!checkPrevProductsList(newStartingPoint, newEndingPoint)) {
+      return;
+    }
   }
 
   function moveProductsToRight() {
-    setCurrRightArrowIdx((prev) => prev + 1);
-    const newStartingpoint = currRightArrowIdx * 5;
-    const newEndingPoint = newStartingpoint + 5;
-    const newProductsToDisplay = drinks.slice(newStartingpoint, newEndingPoint);
-    console.log(newProductsToDisplay);
+    setCanShowLeftArrow(true);
+    setCurrArrowIdxs((prev) => prev + 1);
+    const newStartingPoint: number = currArrowIdxs * 5;
+    const newEndingPoint = newStartingPoint + 5;
+
+    const newProductsToDisplay = products.slice(newStartingPoint, newEndingPoint);
+
     setProductsToDisplay(newProductsToDisplay);
-    // setProductsToDisplay();
+    if (!checkNextProductsList(newStartingPoint, newEndingPoint)) {
+      return;
+    }
+  }
+
+  function checkNextProductsList(newStartingPoint: number, newEndingPoint: number) {
+    const nextProductsList = products.slice(newStartingPoint + 5, newEndingPoint + 5);
+    if (nextProductsList[4] === undefined) {
+      setCanShowRightArrow(true);
+      return false;
+    }
+
+    return true;
+  }
+
+  function checkPrevProductsList(newStartingPoint: number, newEndingPoint: number) {
+    const nextProductsList = products.slice(newStartingPoint - 5, newEndingPoint - 5);
+
+    if (nextProductsList[4] === undefined) {
+      setCanShowLeftArrow(false);
+      return false;
+    }
+
+    return true;
   }
 
   function goToProduct() {}
@@ -68,9 +107,11 @@ export default function MainPageSlider1({ drinksArr }: any) {
                 </button>
               )}
 
-              <button className="arrowRight" onClick={() => moveProductsToRight()}>
-                <FontAwesomeIcon icon={faAngleRight} />
-              </button>
+              {!canShowRightArrow && (
+                <button className="arrowRight" onClick={() => moveProductsToRight()}>
+                  <FontAwesomeIcon icon={faAngleRight} />
+                </button>
+              )}
             </div>
           </div>
         </div>

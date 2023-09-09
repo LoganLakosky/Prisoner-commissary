@@ -74,13 +74,48 @@ const drinksArr = [
     itemPrice: "$10.99",
     imgSrc: "/Coke.webp",
   },
+    {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Mtn Dew",
+    itemPrice: "$15.99",
+    imgSrc: "/MtnDew.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "12 Oz",
+    productName: "Orange Fanta",
+    itemPrice: "$5.99",
+    imgSrc: "/OrangeFanta.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Sprite",
+    itemPrice: "$12.99",
+    imgSrc: "/Sprite.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Starry",
+    itemPrice: "$7.99",
+    imgSrc: "/Starry.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Starry",
+    itemPrice: "$7.99",
+    imgSrc: "/Starry.webp",
+  },
 ];
 
 export default function MainPageContent() {
   return (
     <div className="mainPageContentContainer">
       <div className="imageSlider1"></div>
-      <MainPageSlider1 drinksArr={...drinksArr} />
+      <MainPageSlider1 productsArr={...drinksArr} />
 
       <div className="mainPageContent2">
         <div className="productsContainer3"></div>
