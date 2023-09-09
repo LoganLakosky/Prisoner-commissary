@@ -1,9 +1,9 @@
 import "./homepage.css";
-import MainPageContent from "./mainPageContent";
-import NavBar from "./navBar";
+import MainPageContent from "./mainPageComponents/mainPageContentWrapper";
+import NavBar from "./NavbarCompoents/navBar";
 export default function HomePage() {
   return (
-    <div className="HomePageMainContainer">
+    <div className="homePageMainContainer">
       <NavBar />
       <MainPageContent />
     </div>
