@@ -1,3 +1,11 @@
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
 .mainPageContent1 {
   margin-bottom: 20px;
 }
@@ -29,7 +37,6 @@
   display: flex;
   width: 100%;
   height: 20%;
-  border-bottom: 2px solid white;
   justify-content: flex-end;
   align-items: center;
 }
@@ -52,9 +59,119 @@
 
 .productArrowsContainer {
   display: flex;
-  width: 15%;
+  width: 10%;
   height: 100%;
   margin-right: 20px;
   justify-content: center;
   align-items: center;
+  gap: 15px;
+}
+
+.arrowLeft,
+.arrowRight {
+  display: flex;
+  height: 50%;
+  width: 30%;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  width: 22px;
+  height: 17px;
+}
+
+.arrowLeft,
+.arrowRight:hover {
+  cursor: pointer;
+}
+
+.productDetailsContainer {
+  display: Flex;
+  width: 95%;
+  height: 95%;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.productDetails {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 90%;
+}
+
+.productWrapperBtn {
+  position: absolute;
+  width: 100%;
+  height: 75%;
+  top: 0px;
+  background: none;
+  border: none;
+}
+
+.productDetailsTop {
+  display: flex;
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+}
+
+.productImg {
+  border-radius: 6px 6px 0 0;
+  width: 100%;
+  height: 151px;
+}
+
+.bottomOfProductContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0 0 6px 6px;
+}
+
+.productDetailsText {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 90%;
+  color: black;
+  font-size: 15px;
+  padding-left: 5px;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  margin-top: 10px;
+}
+
+.addToCartBtnContainer {
+  display: flex;
+  width: 100%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
+
+.addToCartBtnContainer button {
+  display: flex;
+  width: 80%;
+  height: 40%;
+  border: 2px solid black;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
 }

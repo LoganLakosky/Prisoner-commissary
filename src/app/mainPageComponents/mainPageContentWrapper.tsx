@@ -3,9 +3,79 @@ import "./mainPageContentWrapper.css";
 import MainPageSlider1 from "./mainPageSlider1";
 
 const drinksArr = [
-  { productType: "Soda", productName: "Coca-Cola", imgSrc: "./Coke.webp" },
-  { productType: "Soda", productName: "Pepsi", imgSrc: "./Coke.webp" },
+  {
+    productType: "Soda",
+    productDetails: "12 Oz",
+    productName: "Coca-Cola",
+    itemPrice: "$10.99",
+    imgSrc: "/Coke.webp",
+  },
+
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Sunkist",
+    itemPrice: "$10.99",
+    imgSrc: "/Sunkist.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "12 Oz",
+    productName: "Drpepper",
+    itemPrice: "$2.99",
+    imgSrc: "/Drpepper.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Fresca",
+    itemPrice: "$11.99",
+    imgSrc: "/Fresca.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "12 Oz",
+    productName: "Canned Fresca",
+    itemPrice: "$4.99",
+    imgSrc: "/FrescaCan.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Mtn Dew",
+    itemPrice: "$15.99",
+    imgSrc: "/MtnDew.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "12 Oz",
+    productName: "Orange Fanta",
+    itemPrice: "$5.99",
+    imgSrc: "/OrangeFanta.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Sprite",
+    itemPrice: "$12.99",
+    imgSrc: "/Sprite.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "24 Oz",
+    productName: "Starry",
+    itemPrice: "$7.99",
+    imgSrc: "/Starry.webp",
+  },
+  {
+    productType: "Soda",
+    productDetails: "12 Oz",
+    productName: "Coca-Cola",
+    itemPrice: "$10.99",
+    imgSrc: "/Coke.webp",
+  },
 ];
+
 export default function MainPageContent() {
   return (
     <div className="mainPageContentContainer">
