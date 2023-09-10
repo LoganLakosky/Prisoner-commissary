@@ -8,8 +8,20 @@ export default function SubLogin() {
   const [passwordValue, setPasswordValue] = useState<string>("");
 
   function validateLogin(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
+    if (usernameValue.length < 2) {
+      //Add better error
+      alert("Please enter a longer username");
+      return;
+    }
 
+    if (passwordValue.length < 2) {
+      //Add better Error
+      alert("Please enter a longer password");
+      return;
+    }
+
+    window.location.href = "/";
   }
 
   return (

@@ -9,10 +9,19 @@ export default function SubSignup() {
 
   function validateLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (usernameValue === "") {
-      alert("Please update your username");
+    if (usernameValue.length < 2) {
+      //Add a better error
+      alert("Please enter a longer username");
       return;
     }
+
+    if (passwordValue.length < 2) {
+      //Add a better error
+      alert("Please enter a longer password");
+      return;
+    }
+
+    window.location.href = "/";
   }
 
   return (
@@ -24,6 +33,7 @@ export default function SubSignup() {
             type="text"
             id="username-label"
             value={usernameValue}
+            required
             onChange={(e: ChangeEvent<HTMLInputElement>) => setUsernameValue(e.target.value)}
           />
         </div>
@@ -33,6 +43,7 @@ export default function SubSignup() {
             type="text"
             id="password-label"
             value={passwordValue}
+            required
             onChange={(e: ChangeEvent<HTMLInputElement>) => setPasswordValue(e.target.value)}
           />
         </div>
