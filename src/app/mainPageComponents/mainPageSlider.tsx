@@ -1,18 +1,10 @@
 "use client";
 
-//const res = await fetch("api/drinks", {
-//  method: "GET",
-//});
-//const response = await res.json();
-//console.log(response);
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import "./mainPageSlider.css";
 
 type ProductsProps = {
   productType?: string;
@@ -22,13 +14,14 @@ type ProductsProps = {
   productDetails: string;
 };
 
-export default function MainPageSlider1({ productsArr }: any) {
+export default function MainPageSlider({ productsArr, productCategory }: any) {
   const [canShowLeftArrow, setCanShowLeftArrow] = useState<boolean>(false);
   const [canShowRightArrow, setCanShowRightArrow] = useState<boolean>(false);
 
   const [currArrowIdxs, setCurrArrowIdxs] = useState<number>(1);
 
   const [productsToDisplay, setProductsToDisplay] = useState<ProductsProps[]>([]);
+
   const products: ProductsProps[] = productsArr;
 
   useEffect(() => {
@@ -93,61 +86,52 @@ export default function MainPageSlider1({ productsArr }: any) {
   function addItemToCart() {}
 
   return (
-    <div className="mainPageContent1">
-      <div className="productsContainer1">
-        <div className="productsTopContainer">
-          <div className="productsTop">
-            <div className="productsTopText">
-              <h1>Shop all your favorite drinks!</h1>
-            </div>
-            <div className="productArrowsContainer">
-              {canShowLeftArrow && (
-                <button className="arrowLeft" onClick={() => moveProductsToLeft()}>
-                  <FontAwesomeIcon icon={faAngleLeft} />
-                </button>
-              )}
+    <>
+      <div className="productsTopContainer">
+        <div className="productsTop">
+          <div className="productsTopText">
+            <h1>Shop all your favorite {productCategory}</h1>
+          </div>
+          <div className="productArrowsContainer">
+            {canShowLeftArrow && (
+              <button className="arrowLeft" onClick={() => moveProductsToLeft()}>
+                <FontAwesomeIcon icon={faAngleLeft} />
+              </button>
+            )}
 
-              {!canShowRightArrow && (
-                <button className="arrowRight" onClick={() => moveProductsToRight()}>
-                  <FontAwesomeIcon icon={faAngleRight} />
-                </button>
-              )}
-            </div>
+            {!canShowRightArrow && (
+              <button className="arrowRight" onClick={() => moveProductsToRight()}>
+                <FontAwesomeIcon icon={faAngleRight} />
+              </button>
+            )}
           </div>
         </div>
-        <div className="productDetailsContainer">
-          {productsToDisplay.map((item: ProductsProps, idx: number) => {
-            return (
-              <div key={idx} className="productDetails">
-                <button className="productWrapperBtn" onClick={() => goToProduct()}></button>
+      </div>
+      <div className="productDetailsContainer">
+        {productsToDisplay.map((item: ProductsProps, idx: number) => {
+          return (
+            <div key={idx} className="productDetails">
+              <button className="productWrapperBtn" onClick={() => goToProduct()}></button>
 
-                <div className="productDetailsTop">
-                  <Image
-                    className="productImg"
-                    src={item.imgSrc}
-                    alt="/"
-                    width={100}
-                    height={100}
-                  />
+              <div className="productDetailsTop">
+                <Image className="productImg" src={item.imgSrc} alt="/" width={100} height={100} />
+              </div>
+              <div className="bottomOfProductContainer">
+                <div className="productDetailsText">
+                  <p>
+                    {item.productName} {item.productDetails}
+                  </p>
+                  <p>{item.itemPrice}</p>
                 </div>
-                <div className="bottomOfProductContainer">
-                  <div className="productDetailsText">
-                    <p>
-                      {item.productName} {item.productDetails}
-                    </p>
-                    <p>{item.itemPrice}</p>
-                  </div>
 
-                  <div className="addToCartBtnContainer">
-                    <button onClick={() => addItemToCart()}>Add to cart</button>
-                  </div>
+                <div className="addToCartBtnContainer">
+                  <button onClick={() => addItemToCart()}>Add to cart</button>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
-      <div className="productsContainer2"></div>
-    </div>
+    </>
   );
 }
