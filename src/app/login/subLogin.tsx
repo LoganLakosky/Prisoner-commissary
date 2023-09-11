@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import "./login.css";
+import "./subLogin.css";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 export default function SubLogin() {

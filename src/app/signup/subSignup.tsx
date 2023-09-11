@@ -1,7 +1,7 @@
 "use client";
 import { useState, ChangeEvent, FormEvent } from "react";
 
-import "./signup.css";
+import "./subSignup.css";
 import Link from "next/link";
 export default function SubSignup() {
   const [usernameValue, setUsernameValue] = useState<string>("");
