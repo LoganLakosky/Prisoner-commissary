@@ -1,3 +1,7 @@
+body {
+  height: 1900px;
+}
+
 .mainPageContentContainer {
   display: flex;
   width: 90%;

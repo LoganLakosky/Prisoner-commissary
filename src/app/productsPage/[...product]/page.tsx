@@ -1,36 +1,84 @@
 "use client";
+import Image from "next/image";
+import "./productsPage.css";
+import { useState, useEffect } from "react";
 
 type Params = {
-  params: {};
+  params: {
+    product: string;
+  };
 };
 
-export default function ProductPage({ params: { product } }: any) {
+export default function ProductPage({ params: { product } }: Params) {
   //Coca-Cola   10.99   /Sodas/Coke.webp   20oz
+  const [imgSrc, setImgSrc] = useState<string>("");
+  const [productName, setProductName] = useState<string>("");
+  const [productPrice, setProductPrice] = useState<string>("");
+  const [productDetails, setProductDetails] = useState<string>("");
 
+  useEffect(() => {
+    function getProductDetails() {
+      if (product[1] === "Sodas") {
+        //GET PRODUCT INFORMATION
+        const endingImgSrc = product[2].split("!");
+        const ImgSrc = `${product[1]}/${endingImgSrc[0]}`;
+        setImgSrc(ImgSrc);
 
-  //GET PRODUCT INFORMATION
-  const endingImgSrc = product[2].split("!");
-  const ImgSrc = `${product[1]}/${endingImgSrc[0]}`;
+        const product0Tmp = product[0].split("!");
+        const productName = product0Tmp[1];
+        setProductName(productName);
 
-  const product0Tmp = product[0].split("!");
-  const productName = product0Tmp[1];
+        const productPriceTmp = product0Tmp[3].split("%24");
+        const productPrice = `$${productPriceTmp[1]}`;
+        setProductPrice(productPrice);
 
-  const productPriceTmp = product0Tmp[3].split("%24");
-  const productPrice = `$${productPriceTmp[1]}`;
+        const productDetailsTmp1 = product[2].split("%");
+        const productDetailsTmp2 = productDetailsTmp1[2].split("!");
+        const productDetails = productDetailsTmp2[0];
+        setProductDetails(productDetails);
+      } else {
+        const endingImgSrc = product[2].split("!");
+        const ImgSrc = `${product[1]}/${endingImgSrc[0]}`;
+        setImgSrc(ImgSrc);
 
-  const productDetailsTmp1 = product[2].split("%");
-  const productDetailsTmp2 = productDetailsTmp1[2].split("!");
-  const productDetails = productDetailsTmp2[0];
+        const product0Tmp = product[0].split("!");
+        const productName = product0Tmp[1];
+        setProductName(productName);
+
+        const productPriceTmp = product0Tmp[3].split("%24");
+        const productPrice = `$${productPriceTmp[1]}`;
+        setProductPrice(productPrice);
+      }
+    }
+    getProductDetails();
+  }, []);
+
+  function addToCart() {}
+
+  function returnHome() {
+    window.location.href = "/";
+  }
 
   return (
-    <>
-      <h1>{productName}</h1>
-
-      <h1>{productPrice}</h1>
-
-      <h1>{ImgSrc}</h1>
-
-      <h1>Product details: {productDetails}</h1>
-    </>
+    <div className="productsPageMainContainer">
+      <div className="productsPageMain">
+        <div className="productsPage">
+          <div className="productsPageImgContainer">
+            <Image src={`/${imgSrc}`} alt="/" fill={true} />
+          </div>
+          <div className="productDetails">
+            <p>
+              {productName} {productPrice} {productDetails}
+            </p>
+          </div>
+          <div className="productsPageAddToCartBtnContainer">
+            <button onClick={() => addToCart()}>Add to cart</button>
+          </div>
+          <div className="returnHomeBtnContainer">
+            <button onClick={() => returnHome()}>Return Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

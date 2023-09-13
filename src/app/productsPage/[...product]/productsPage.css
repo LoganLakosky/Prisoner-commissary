@@ -1,0 +1,97 @@
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.productsPageMainContainer {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.productsPageMain {
+  display: flex;
+  width: 90%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 6px;
+}
+
+.productsPage {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.productsPageImgContainer {
+  position: relative;
+  display: flex;
+  width: 50%;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.productsPageImgContainer img {
+  border: 4px solid white;
+  border-radius: 4px;
+}
+
+.productDetails {
+  display: flex;
+  width: 100%;
+  height: 20%;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.productsPageAddToCartBtnContainer {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.productsPageAddToCartBtnContainer button {
+  display: flex;
+  width: 12%;
+  height: 55%;
+  border: 2px solid white;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+}
+
+.returnHomeBtnContainer {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.returnHomeBtnContainer button {
+  display: flex;
+  width: 12%;
+  height: 55%;
+  border: 2px solid white;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+}
+

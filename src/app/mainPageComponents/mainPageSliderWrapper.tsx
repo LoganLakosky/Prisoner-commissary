@@ -181,7 +181,7 @@ const snacksArr: any = [
 
 const productsArr = [drinksArr, snacksArr];
 
-export default function MainPageSliderWrapper({ setTest }: any) {
+export default function MainPageSliderWrapper() {
   return (
     <div className="mainPageContent">
       <div className="productsContainer1">

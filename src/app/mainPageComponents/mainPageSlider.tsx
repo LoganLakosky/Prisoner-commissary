@@ -110,10 +110,13 @@ export default function MainPageSlider({ productsArr, productCategory }: any) {
       </div>
       <div className="productDetailsContainer">
         {productsToDisplay.map((item: ProductsProps, idx: number) => {
-          console.log(item.imgSrc)
           return (
             <div key={idx} className="productDetails">
-              <Link href={`/productsPage/productName=!${item.productName}!price=!${item.itemPrice}!imgSrc=!${item.imgSrc}!productDetails=!${item.productDetails}!`} className="productWrapperBtn" onClick={() => goToProduct()}></Link>
+              <Link
+                href={`/productsPage/productName=!${item.productName}!price=!${item.itemPrice}!imgSrc=!${item.imgSrc}!productDetails=!${item.productDetails}!`}
+                className="productWrapperBtn"
+                onClick={() => goToProduct()}
+              ></Link>
 
               <div className="productDetailsTop">
                 <Image className="productImg" src={item.imgSrc} alt="/" width={100} height={100} />
