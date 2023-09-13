@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 type ProductsProps = {
   productType?: string;
@@ -109,9 +110,10 @@ export default function MainPageSlider({ productsArr, productCategory }: any) {
       </div>
       <div className="productDetailsContainer">
         {productsToDisplay.map((item: ProductsProps, idx: number) => {
+          console.log(item.imgSrc)
           return (
             <div key={idx} className="productDetails">
-              <button className="productWrapperBtn" onClick={() => goToProduct()}></button>
+              <Link href={`/productsPage/productName=!${item.productName}!price=!${item.itemPrice}!imgSrc=!${item.imgSrc}!productDetails=!${item.productDetails}!`} className="productWrapperBtn" onClick={() => goToProduct()}></Link>
 
               <div className="productDetailsTop">
                 <Image className="productImg" src={item.imgSrc} alt="/" width={100} height={100} />
